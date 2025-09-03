@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Katalog Produk - gamescheat.id</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <nav class="navbar">
+            <div class="nav-container">
+                <div class="logo">
+                    <i class="fas fa-gamepad"></i>
+                    <h1>gamescheat.id</h1>
+                </div>
+                <ul class="nav-menu">
+                    <li><a href="index.html">Beranda</a></li>
+                    <li><a href="features.html#features">Fitur</a></li>
+                    <li><a href="catalog.html" class="active">Katalog</a></li>
+                    <li><a href="#contact">Kontak</a></li>
+                </ul>
+                <div class="hamburger">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <!-- Animated Background -->
+        <div class="floating-particles">
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+        </div>
+        <div class="glitch-effect"></div>
+        <div class="matrix-rain">
+            <div class="matrix-column"></div>
+            <div class="matrix-column"></div>
+            <div class="matrix-column"></div>
+            <div class="matrix-column"></div>
+            <div class="matrix-column"></div>
+            <div class="matrix-column"></div>
+            <div class="matrix-column"></div>
+            <div class="matrix-column"></div>
+            <div class="matrix-column"></div>
+            <div class="matrix-column"></div>
+        </div>
+        
+        <div class="hero-content">
+            <h1>Katalog Produk</h1>
+            <p>Pilih paket cheat gaming sesuai kebutuhan Anda</p>
+            <a href="features.html#features" class="cta-button">Lihat Fitur</a>
+        </div>
+    </section>
+
+    <!-- Products Section -->
+    <section id="products" class="products">
+        <div class="container">
+            <h2 class="section-title">Produk Cheat Gaming</h2>
+            <div class="products-grid">
+                <!-- Mobile Legends -->
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="mlbb.jpg" alt="Mobile Legends" style="width: 100%; height: 100%; object-fit: cover; border-radius: 10px;">
+                    </div>
+                    <h3>Mobile Legends</h3>
+                    <div class="product-options">
+                        <div class="option">
+                            <span>Paket Mingguan</span>
+                            <span class="price">Rp 30.000</span>
+                        </div>
+                        <div class="option">
+                            <span>Paket Bulanan</span>
+                            <span class="price">Rp 50.000</span>
+                        </div>
+                        <div class="option">
+                            <span>Paket Season</span>
+                            <span class="price">Rp 80.000</span>
+                        </div>
+                        <div class="option">
+                            <span>Paket Permanen</span>
+                            <span class="price">Rp 250.000</span>
+                        </div>
+                    </div>
+                    <button class="buy-button" onclick="openPaymentModal('Mobile Legends')">Beli Sekarang</button>
+                </div>
+
+                <!-- Free Fire -->
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="freefire.jpeg" alt="Free Fire" style="width: 100%; height: 100%; object-fit: cover; border-radius: 10px;">
+                    </div>
+                    <h3>Free Fire</h3>
+                    <div class="product-options">
+                        <div class="option">
+                            <span>Paket Mingguan</span>
+                            <span class="price">Rp 30.000</span>
+                        </div>
+                        <div class="option">
+                            <span>Paket Bulanan</span>
+                            <span class="price">Rp 50.000</span>
+                        </div>
+                        <div class="option">
+                            <span>Paket Season</span>
+                            <span class="price">Rp 80.000</span>
+                        </div>
+                        <div class="option">
+                            <span>Paket Permanen</span>
+                            <span class="price">Rp 250.000</span>
+                        </div>
+                    </div>
+                    <button class="buy-button" onclick="openPaymentModal('Free Fire')">Beli Sekarang</button>
+                </div>
+
+                <!-- PUBG Mobile -->
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="pubg.jpg" alt="PUBG Mobile" style="width: 100%; height: 100%; object-fit: cover; border-radius: 10px;">
+                    </div>
+                    <h3>PUBG Mobile</h3>
+                    <div class="product-options">
+                        <div class="option">
+                            <span>Paket Mingguan</span>
+                            <span class="price">Rp 30.000</span>
+                        </div>
+                        <div class="option">
+                            <span>Paket Bulanan</span>
+                            <span class="price">Rp 50.000</span>
+                        </div>
+                        <div class="option">
+                            <span>Paket Season</span>
+                            <span class="price">Rp 80.000</span>
+                        </div>
+                        <div class="option">
+                            <span>Paket Permanen</span>
+                            <span class="price">Rp 250.000</span>
+                        </div>
+                    </div>
+                    <button class="buy-button" onclick="openPaymentModal('PUBG Mobile')">Beli Sekarang</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Payment Section -->
+    <section id="payment" class="payment">
+        <div class="container">
+            <h2 class="section-title">Metode Pembayaran</h2>
+            <div class="payment-methods">
+                <div class="payment-card">
+                    <i class="fas fa-qrcode"></i>
+                    <h3>QRIS</h3>
+                    <p>Scan QRIS untuk pembayaran cepat</p>
+                </div>
+                <div class="payment-card">
+                    <i class="fas fa-wallet"></i>
+                    <h3>DANA</h3>
+                    <p>Transfer via DANA</p>
+                </div>
+                <div class="payment-card">
+                    <i class="fas fa-credit-card"></i>
+                    <h3>GoPay</h3>
+                    <p>Bayar dengan GoPay</p>
+                </div>
+                <div class="payment-card">
+                    <i class="fas fa-shopping-bag"></i>
+                    <h3>ShopeePay</h3>
+                    <p>Pembayaran via ShopeePay</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+        <div class="container">
+            <h2 class="section-title">Hubungi Kami</h2>
+            <div class="contact-info">
+                <div class="contact-item" onclick="openWhatsApp()">
+                    <i class="fab fa-whatsapp"></i>
+                    <h3>WhatsApp</h3>
+                    <p>+62 838-5722-8661</p>
+                </div>
+                <div class="contact-item">
+                    <i class="fab fa-youtube"></i>
+                    <h3>YouTube</h3>
+                    <p>@gamescheat.id</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2024 gamescheat.id. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Payment Modal -->
+    <div id="paymentModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closePaymentModal()">&times;</span>
+            <h2>Konfirmasi Pembayaran</h2>
+            
+            <div class="order-info">
+                <h3>Detail Pesanan</h3>
+                <p><strong>Game:</strong> <span id="selectedGame">-</span></p>
+                <p><strong>Paket:</strong> <span id="selectedPackage">-</span></p>
+                <p><strong>Harga:</strong> <span id="selectedPrice">-</span></p>
+            </div>
+
+            <form class="payment-form" onsubmit="handlePaymentSubmission(event)">
+                <div class="form-group">
+                    <label for="gameSelect">Pilih Game:</label>
+                    <select id="gameSelect" name="game" required>
+                        <option value="">Pilih Game</option>
+                        <option value="Mobile Legends">Mobile Legends</option>
+                        <option value="Free Fire">Free Fire</option>
+                        <option value="PUBG Mobile">PUBG Mobile</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="packageSelect">Pilih Paket:</label>
+                    <select id="packageSelect" name="package" required>
+                        <option value="">Pilih Paket</option>
+                        <option value="mingguan">Paket Mingguan</option>
+                        <option value="bulanan">Paket Bulanan</option>
+                        <option value="season">Paket Season</option>
+                        <option value="permanen">Paket Permanen</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label>Metode Pembayaran:</label>
+                    <div class="payment-options">
+                        <label class="payment-option">
+                            <input type="radio" name="paymentMethod" value="qris" required>
+                            <i class="fas fa-qrcode"></i>
+                            <span>QRIS</span>
+                        </label>
+                        <label class="payment-option">
+                            <input type="radio" name="paymentMethod" value="dana" required>
+                            <i class="fas fa-wallet"></i>
+                            <span>DANA</span>
+                        </label>
+                        <label class="payment-option">
+                            <input type="radio" name="paymentMethod" value="gopay" required>
+                            <i class="fas fa-credit-card"></i>
+                            <span>GoPay</span>
+                        </label>
+                        <label class="payment-option">
+                            <input type="radio" name="paymentMethod" value="shopeepay" required>
+                            <i class="fas fa-shopping-bag"></i>
+                            <span>ShopeePay</span>
+                        </label>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="whatsapp">Nomor WhatsApp:</label>
+                    <input type="tel" id="whatsapp" name="whatsapp" placeholder="Contoh: 08123456789" required>
+                </div>
+
+                <div class="form-group">
+                    <label>Upload Bukti Pembayaran:</label>
+                    <div class="file-upload-container">
+                        <input type="file" id="paymentProof" name="paymentProof" accept="image/*,.pdf" onchange="handleFileUpload(event)">
+                        <label for="paymentProof" class="file-upload-label">
+                            <i class="fas fa-cloud-upload-alt"></i>
+                            <div class="file-upload-text">Klik untuk upload file</div>
+                            <div class="file-upload-hint">JPG, PNG, atau PDF (Max 5MB)</div>
+                        </label>
+                    </div>
+                    <div id="filePreview" class="file-preview" style="display: none;">
+                        <i class="fas fa-file"></i>
+                        <span class="file-name" id="fileName"></span>
+                        <button type="button" class="remove-file" onclick="removeFile()">
+                            <i class="fas fa-times"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <div id="paymentDetails"></div>
+
+                <!-- Payment Instructions -->
+                <div class="payment-instructions">
+                    <h4>Instruksi Pembayaran:</h4>
+                    <div class="instruction-content">
+                        <div class="instruction-item" id="qris-instruction" style="display: none;">
+                            <p><strong>QRIS:</strong></p>
+                            <p>1. Buka aplikasi mobile banking atau e-wallet</p>
+                            <p>2. Pilih menu "Scan QR" atau "QRIS"</p>
+                            <p>3. Scan QR Code di atas</p>
+                            <p>4. Masukkan nominal pembayaran</p>
+                            <p>5. Konfirmasi pembayaran</p>
+                        </div>
+                        <div class="instruction-item" id="dana-instruction" style="display: none;">
+                            <p><strong>DANA:</strong></p>
+                            <p>1. Buka aplikasi DANA</p>
+                            <p>2. Pilih menu "Kirim"</p>
+                            <p>3. Masukkan nomor: 083857228661</p>
+                            <p>4. Masukkan nominal pembayaran</p>
+                            <p>5. Konfirmasi pembayaran</p>
+                        </div>
+                        <div class="instruction-item" id="gopay-instruction" style="display: none;">
+                            <p><strong>GoPay:</strong></p>
+                            <p>1. Buka aplikasi Gojek</p>
+                            <p>2. Pilih menu "GoPay"</p>
+                            <p>3. Pilih "Kirim"</p>
+                            <p>4. Masukkan nomor: 083857228657</p>
+                            <p>5. Masukkan nominal pembayaran</p>
+                            <p>6. Konfirmasi pembayaran</p>
+                        </div>
+                        <div class="instruction-item" id="shopeepay-instruction" style="display: none;">
+                            <p><strong>ShopeePay:</strong></p>
+                            <p>1. Buka aplikasi Shopee</p>
+                            <p>2. Pilih menu "ShopeePay"</p>
+                            <p>3. Pilih "Kirim"</p>
+                            <p>4. Masukkan nomor: 083857228657</p>
+                            <p>5. Masukkan nominal pembayaran</p>
+                            <p>6. Konfirmasi pembayaran</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-actions">
+                    <button type="button" class="cancel-btn" onclick="closePaymentModal()">Batal</button>
+                    <button type="submit" class="submit-btn">Konfirmasi Pembayaran</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Loading Modal -->
+    <div id="loadingModal" class="modal">
+        <div class="loading-content">
+            <div class="loading-spinner">
+                <i class="fas fa-spinner"></i>
+            </div>
+            <h2>Memproses Pembayaran</h2>
+            <p>Mohon tunggu sebentar...</p>
+            <div class="loading-dots">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
