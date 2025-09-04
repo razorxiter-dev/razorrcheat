@@ -1968,3 +1968,323 @@ body {
 .modal-content::-webkit-scrollbar-thumb:hover {
     background: linear-gradient(45deg, #a78bfa, #8b5cf6);
 }
+
+/* Testimoni Page Styles */
+.testimoni {
+    padding: 100px 0;
+    background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+    min-height: 100vh;
+}
+
+.testimoni-stats {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 2rem;
+    margin-bottom: 4rem;
+    padding: 2rem 0;
+}
+
+.stat-item {
+    text-align: center;
+    padding: 2rem;
+    background: rgba(139, 92, 246, 0.1);
+    border-radius: 15px;
+    border: 2px solid rgba(139, 92, 246, 0.3);
+    transition: all 0.3s ease;
+}
+
+.stat-item:hover {
+    transform: translateY(-5px);
+    border-color: #8b5cf6;
+    box-shadow: 0 10px 30px rgba(139, 92, 246, 0.3);
+}
+
+.stat-number {
+    font-size: 3rem;
+    font-weight: bold;
+    color: #8b5cf6;
+    margin-bottom: 0.5rem;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.stat-label {
+    font-size: 1.1rem;
+    color: #e2e8f0;
+    font-weight: 500;
+}
+
+.testimoni-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 2rem;
+    margin-bottom: 4rem;
+}
+
+.testimoni-card {
+    background: rgba(42, 42, 42, 0.8);
+    border-radius: 15px;
+    padding: 2rem;
+    border: 2px solid rgba(139, 92, 246, 0.2);
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.testimoni-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(45deg, #8b5cf6, #a78bfa);
+}
+
+.testimoni-card:hover {
+    transform: translateY(-5px);
+    border-color: #8b5cf6;
+    box-shadow: 0 15px 40px rgba(139, 92, 246, 0.3);
+}
+
+.testimoni-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 1.5rem;
+}
+
+.user-info {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.user-avatar {
+    width: 50px;
+    height: 50px;
+    background: linear-gradient(45deg, #8b5cf6, #a78bfa);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    color: white;
+}
+
+.user-details h4 {
+    color: #ffffff;
+    font-size: 1.2rem;
+    margin-bottom: 0.25rem;
+}
+
+.user-details p {
+    color: #a78bfa;
+    font-size: 0.9rem;
+}
+
+.rating {
+    display: flex;
+    gap: 0.25rem;
+}
+
+.rating i {
+    color: #fbbf24;
+    font-size: 1.1rem;
+}
+
+.testimoni-content {
+    margin-bottom: 1.5rem;
+}
+
+.testimoni-content p {
+    color: #e2e8f0;
+    font-size: 1rem;
+    line-height: 1.6;
+    font-style: italic;
+}
+
+.testimoni-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 1rem;
+    border-top: 1px solid rgba(139, 92, 246, 0.2);
+}
+
+.game-tag {
+    background: linear-gradient(45deg, #8b5cf6, #a78bfa);
+    color: white;
+    padding: 0.25rem 0.75rem;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: 500;
+}
+
+.date {
+    color: #9ca3af;
+    font-size: 0.8rem;
+}
+
+.video-testimoni {
+    margin: 4rem 0;
+    text-align: center;
+}
+
+.video-testimoni h3 {
+    font-size: 2.5rem;
+    color: #ffffff;
+    margin-bottom: 2rem;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.video-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+.video-item {
+    background: rgba(42, 42, 42, 0.8);
+    border-radius: 15px;
+    padding: 1.5rem;
+    border: 2px solid rgba(139, 92, 246, 0.2);
+    transition: all 0.3s ease;
+}
+
+.video-item:hover {
+    transform: translateY(-5px);
+    border-color: #8b5cf6;
+    box-shadow: 0 15px 40px rgba(139, 92, 246, 0.3);
+}
+
+.video-item iframe {
+    width: 100%;
+    height: 200px;
+    border-radius: 10px;
+    margin-bottom: 1rem;
+}
+
+.video-item h4 {
+    color: #ffffff;
+    font-size: 1.1rem;
+    margin-top: 1rem;
+}
+
+.testimoni-cta {
+    text-align: center;
+    padding: 4rem 2rem;
+    background: rgba(139, 92, 246, 0.1);
+    border-radius: 20px;
+    border: 2px solid rgba(139, 92, 246, 0.3);
+    margin-top: 4rem;
+}
+
+.testimoni-cta h3 {
+    font-size: 2.5rem;
+    color: #ffffff;
+    margin-bottom: 1rem;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.testimoni-cta p {
+    font-size: 1.2rem;
+    color: #e2e8f0;
+    margin-bottom: 2rem;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.cta-buttons {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.channel-button {
+    background: linear-gradient(45deg, #25d366, #128c7e) !important;
+    border: 2px solid #25d366 !important;
+}
+
+.channel-button:hover {
+    background: linear-gradient(45deg, #128c7e, #25d366) !important;
+    transform: translateY(-3px);
+    box-shadow: 0 10px 25px rgba(37, 211, 102, 0.4);
+}
+
+/* Mobile Responsive for Testimoni */
+@media (max-width: 768px) {
+    .testimoni-stats {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1rem;
+    }
+    
+    .stat-item {
+        padding: 1.5rem;
+    }
+    
+    .stat-number {
+        font-size: 2rem;
+    }
+    
+    .stat-label {
+        font-size: 0.9rem;
+    }
+    
+    .testimoni-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+    
+    .testimoni-card {
+        padding: 1.5rem;
+    }
+    
+    .testimoni-header {
+        flex-direction: column;
+        gap: 1rem;
+        align-items: flex-start;
+    }
+    
+    .user-info {
+        gap: 0.75rem;
+    }
+    
+    .user-avatar {
+        width: 40px;
+        height: 40px;
+        font-size: 1.2rem;
+    }
+    
+    .video-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .video-item iframe {
+        height: 180px;
+    }
+    
+    .testimoni-cta {
+        padding: 2rem 1rem;
+    }
+    
+    .testimoni-cta h3 {
+        font-size: 2rem;
+    }
+    
+    .testimoni-cta p {
+        font-size: 1rem;
+    }
+    
+    .cta-buttons {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .cta-buttons .cta-button {
+        width: 100%;
+        max-width: 300px;
+    }
+}

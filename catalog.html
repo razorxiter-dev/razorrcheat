@@ -20,6 +20,7 @@
                     <li><a href="index.html">Beranda</a></li>
                     <li><a href="features.html#features">Fitur</a></li>
                     <li><a href="catalog.html" class="active">Katalog</a></li>
+                    <li><a href="testimoni.html">Testimoni</a></li>
                     <li><a href="#contact">Kontak</a></li>
                 </ul>
                 <div class="hamburger">
@@ -220,6 +221,7 @@
                 <h3>Detail Pesanan</h3>
                 <p><strong>Game:</strong> <span id="selectedGame">-</span></p>
                 <p><strong>Paket:</strong> <span id="selectedPackage">-</span></p>
+                <p><strong>Jenis HP:</strong> <span id="selectedPhoneType">-</span></p>
                 <p><strong>Harga:</strong> <span id="selectedPrice">-</span></p>
             </div>
 
@@ -269,6 +271,15 @@
                             <span>ShopeePay</span>
                         </label>
                     </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="phoneType">Jenis HP:</label>
+                    <select id="phoneType" name="phoneType" required>
+                        <option value="">Pilih Jenis HP</option>
+                        <option value="android">Android</option>
+                        <option value="iphone">iPhone</option>
+                    </select>
                 </div>
 
                 <div class="form-group">
