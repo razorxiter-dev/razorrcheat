@@ -49,8 +49,9 @@ document.querySelectorAll('a[href*="#"]').forEach(link => {
                     });
                 }
             } else {
-                // Different page, let the browser handle navigation
-                // The target page should scroll to anchor on load
+                // Different page, allow normal navigation
+                // Don't prevent default - let browser navigate
+                return true;
             }
         }
     });
@@ -135,10 +136,8 @@ function openPaymentModal(productName) {
 function updatePrice() {
     const gameSelect = document.getElementById('gameSelect');
     const packageSelect = document.getElementById('packageSelect');
-    const phoneTypeSelect = document.getElementById('phoneType');
     const gameElement = document.getElementById('selectedGame');
     const packageElement = document.getElementById('selectedPackage');
-    const phoneTypeElement = document.getElementById('selectedPhoneType');
     const priceElement = document.getElementById('selectedPrice');
     
     const prices = {
@@ -168,14 +167,6 @@ function updatePrice() {
         if (gameElement) gameElement.textContent = currentProduct;
     }
     
-    // Update phone type display
-    if (phoneTypeSelect && phoneTypeSelect.value) {
-        const phoneTypeText = phoneTypeSelect.value === 'android' ? 'Android' : 'iPhone';
-        if (phoneTypeElement) phoneTypeElement.textContent = phoneTypeText;
-    } else {
-        if (phoneTypeElement) phoneTypeElement.textContent = 'Pilih jenis HP terlebih dahulu';
-    }
-    
     if (packageSelect && packageSelect.value && currentProduct) {
         const selectedPackage = prices[currentProduct][packageSelect.value];
         if (selectedPackage) {
@@ -195,13 +186,12 @@ function handlePaymentSubmission(event) {
     const formData = new FormData(event.target);
     const game = formData.get('game');
     const selectedPackage = formData.get('package');
-    const phoneType = formData.get('phoneType');
     const paymentMethod = formData.get('paymentMethod');
     const whatsapp = formData.get('whatsapp');
     const file = formData.get('paymentProof');
     
     // Validasi form
-    if (!game || !selectedPackage || !phoneType || !paymentMethod || !whatsapp || !file) {
+    if (!game || !selectedPackage || !paymentMethod || !whatsapp || !file) {
         alert('Semua field harus diisi!');
         return;
     }
@@ -230,7 +220,7 @@ function handlePaymentSubmission(event) {
         hideLoadingModal();
         
         // Kirim ke WhatsApp dengan bukti pembayaran
-        sendToWhatsApp(game, selectedPackage, phoneType, paymentMethod, whatsapp, file);
+        sendToWhatsApp(game, selectedPackage, paymentMethod, whatsapp, file);
         
         // Tutup modal
         document.getElementById('paymentModal').style.display = 'none';
@@ -244,15 +234,13 @@ function handlePaymentSubmission(event) {
     }, 3000);
 }
 
-function sendToWhatsApp(game, selectedPackage, phoneType, paymentMethod, whatsapp, file) {
+function sendToWhatsApp(game, selectedPackage, paymentMethod, whatsapp, file) {
     // Buat pesan WhatsApp
-    const phoneTypeText = phoneType === 'android' ? 'Android' : 'iPhone';
     const message = `*KONFIRMASI PEMBAYARAN GAMESCHEAT.ID*
 
 *Detail Pesanan:*
 • Game: ${game}
 • Paket: ${selectedPackage}
-• Jenis HP: ${phoneTypeText}
 • Metode Pembayaran: ${paymentMethod}
 • WhatsApp Pembeli: ${whatsapp}
 
@@ -478,18 +466,6 @@ function openWhatsApp() {
     window.open(whatsappUrl, '_blank');
 }
 
-// Function to open WhatsApp channel
-function openWhatsAppChannel() {
-    const channelUrl = 'https://whatsapp.com/channel/0029VanvIZuF1YlMZUKNdD31';
-    window.open(channelUrl, '_blank');
-}
-
-// Function to open WhatsApp testimoni channel
-function openWhatsAppTestimoniChannel() {
-    const channelUrl = 'https://whatsapp.com/channel/0029VbALPyEBKfhsIi6wkK06';
-    window.open(channelUrl, '_blank');
-}
-
 // Close modal functions
 function closeModal() {
     const modal = document.getElementById('paymentModal');
@@ -615,7 +591,6 @@ document.addEventListener('DOMContentLoaded', function() {
     // Add event listeners for payment form
     const gameSelect = document.getElementById('gameSelect');
     const packageSelect = document.getElementById('packageSelect');
-    const phoneTypeSelect = document.getElementById('phoneType');
     
     if (gameSelect) {
         gameSelect.addEventListener('change', updatePrice);
@@ -623,10 +598,6 @@ document.addEventListener('DOMContentLoaded', function() {
     
     if (packageSelect) {
         packageSelect.addEventListener('change', updatePrice);
-    }
-    
-    if (phoneTypeSelect) {
-        phoneTypeSelect.addEventListener('change', updatePrice);
     }
     
     const paymentForm = document.querySelector('.payment-form');
