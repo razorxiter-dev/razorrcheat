@@ -265,8 +265,6 @@ Terima kasih telah memilih gamescheat.id! 🎮`;
 
 function getPaymentInstructions(paymentMethod) {
     switch(paymentMethod) {
-        case 'qris':
-            return 'Scan QRIS yang tersedia di website kami.';
         case 'dana':
             return 'Transfer ke DANA: 083857228661';
         case 'gopay':
@@ -332,22 +330,6 @@ function showPaymentDetails(paymentMethod) {
     let content = '';
     
     switch(paymentMethod) {
-        case 'qris':
-            content = `
-                <div class="payment-detail-content">
-                    <h4>Pembayaran QRIS</h4>
-                    <div class="qr-code">
-                        <img src="WhatsApp Image 2025-09-04 at 02.14.59.jpeg" 
-                             alt="QR Code Pembayaran" 
-                             style="max-width: 200px; max-height: 200px; border-radius: 10px; border: 2px solid #8b5cf6; display: block; margin: 0 auto; background: white; padding: 10px;"
-                             onerror="this.onerror=null; this.src='https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=gamescheat.id-payment'">
-                        <p style="text-align: center; color: #8b5cf6; font-size: 12px; margin: 10px 0 0 0; font-weight: bold;">QR CODE PEMBAYARAN</p>
-                        <p style="text-align: center; color: #e2e8f0; font-size: 10px; margin: 5px 0 0 0;">Scan dengan aplikasi mobile banking</p>
-                    </div>
-                </div>
-            `;
-            break;
-            
         case 'dana':
             content = `
                 <div class="payment-detail-content">
