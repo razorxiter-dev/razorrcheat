@@ -153,9 +153,9 @@
                     <button class="buy-button" onclick="openPaymentModal('PUBG Mobile')">Beli Sekarang</button>
                 </div>
                      <!-- 8balpool -->               
-                                <div class="product-card">
+                    <div class="product-card">
                     <div class="product-image">
-                        <img src="8BL.jpg" alt="Free Fire" style="width: 100%; height: 100%; object-fit: cover; border-radius: 10px;">
+                        <img src="8BL.jpg" alt=" 8balpool" style="width: 100%; height: 100%; object-fit: cover; border-radius: 10px;">
                     </div> 
                     <h3>8 Ball Pool</h3>
                     <div class="product-options">
@@ -176,8 +176,9 @@
                             <span class="price">Rp 250.000</span>
                         </div>
                     </div>
-                    <button class="buy-button" onclick="openPaymentModal('Free Fire')">Beli Sekarang</button>
-                </div>
+<button class="buy-button" onclick="openPaymentModal('8 Ball Pool')">Beli Sekarang</button>
+                    </div>
+                
                 <!-- Delta Force -->                
                     <div class="product-card">
                     <div class="product-image">
@@ -202,7 +203,7 @@
                             <span class="price">Rp 250.000</span>
                         </div>
                     </div>
-                    <button class="buy-button" onclick="openPaymentModal('Free Fire')">Beli Sekarang</button>
+                    <button class="buy-button" onclick="openPaymentModal('Delta Force')">Beli Sekarang</button>
                 </div>
                     <!-- Call of Duty: Mobile -->                
                     <div class="product-card">
@@ -228,7 +229,7 @@
                             <span class="price">Rp 250.000</span>
                         </div>
                     </div>
-                    <button class="buy-button" onclick="openPaymentModal('Free Fire')">Beli Sekarang</button>
+                    <button class="buy-button" onclick="openPaymentModal('Call of Duty: Mobile')">Beli Sekarang</button>
                 </div>
             </div>
         </div>
@@ -306,7 +307,11 @@
                         <option value="Mobile Legends">Mobile Legends</option>
                         <option value="Free Fire">Free Fire</option>
                         <option value="PUBG Mobile">PUBG Mobile</option>
+                        <option value="8 Ball Pool">8 Ball Pool</option>
+                        <option value="Delta Force">Delta Force</option>
+                        <option value="Call of Duty: Mobile">Call of Duty: Mobile</option>
                     </select>
+
                 </div>
 
                 <div class="form-group">
@@ -323,7 +328,12 @@
                 <div class="form-group">
                     <label>Metode Pembayaran:</label>
                     <div class="payment-options">
-
+                        <label class="payment-option">
+                        <input type="radio" name="paymentMethod" value="qris" required>
+                        <i class="fas fa-qrcode"></i>
+                        <span>QRIS</span>
+                        </label>
+                        </label>
                         <label class="payment-option">
                             <input type="radio" name="paymentMethod" value="dana" required>
                             <i class="fas fa-wallet"></i>
@@ -380,14 +390,19 @@
                 <!-- Payment Instructions -->
                 <div class="payment-instructions">
                     <h4>Instruksi Pembayaran:</h4>
-                    <div class="instruction-content">
+
+                        <!-- QRIS -->
                         <div class="instruction-item" id="qris-instruction" style="display: none;">
                             <p><strong>QRIS:</strong></p>
-                            <p>1. Buka aplikasi mobile banking atau e-wallet</p>
-                            <p>2. Pilih menu "Scan QR" atau "QRIS"</p>
-                            <p>3. Scan QR Code di atas</p>
-                            <p>4. Masukkan nominal pembayaran</p>
-                            <p>5. Konfirmasi pembayaran</p>
+                            <!-- Cara Pembayaran -->
+                            <ol style="text-align:left; margin:10px 0; padding-left:18px;">
+                                <li>Buka aplikasi mobile banking atau e-wallet (DANA, GoPay, ShopeePay, OVO, dll).</li>
+                                <li>Pilih menu <strong>Scan QR / QRIS</strong>.</li>
+                                <li>Arahkan kamera ke QR Code di atas.</li>
+                                <li>Masukkan nominal sesuai harga paket yang dipilih.</li>
+                                <li>Periksa detail pembayaran lalu tekan <strong>Bayar</strong>.</li>
+                                <li>Simpan bukti transfer dan upload di form konfirmasi.</li>
+                            </ol>
                         </div>
                         <div class="instruction-item" id="dana-instruction" style="display: none;">
                             <p><strong>DANA:</strong></p>
