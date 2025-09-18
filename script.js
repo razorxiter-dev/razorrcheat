@@ -373,6 +373,39 @@ function showPaymentDetails(paymentMethod) {
                 </div>
             `;
             break;
+
+            case 'paypal':
+        content = `
+            <div class="payment-detail-content">
+                <h4>Pembayaran PayPal</h4>
+                <div class="account-info">
+                    <p><strong>Email PayPal:</strong></p>
+                    <div class="account-number">RazorXiter957@gmail.com</div>
+                    <button class="copy-btn" onclick="copyToClipboard('RazorXiter957@gmail.com')">Salin Email</button>
+                </div>
+                <p style="font-size: 12px; color: #94a3b8; margin-top: 10px;">
+                    Pastikan pilih metode <strong>Friends & Family</strong> agar tidak ada biaya tambahan.
+                </p>
+            </div>
+        `;
+        break;
+
+    case 'binance':
+        content = `
+            <div class="payment-detail-content">
+                <h4>Pembayaran Binance</h4>
+                <div class="account-info">
+                    <p><strong>Binance ID:</strong></p>
+                    <div class="account-number">123456789</div>
+                    <button class="copy-btn" onclick="copyToClipboard('123456789')">Salin ID</button>
+                </div>
+                <p style="font-size: 12px; color: #94a3b8; margin-top: 10px;">
+                    Bisa transfer USDT (TRC20/BEP20). Pastikan jaringan sesuai!
+                </p>
+            </div>
+        `;
+        break;
+
             
         case 'shopeepay':
             content = `
@@ -386,6 +419,8 @@ function showPaymentDetails(paymentMethod) {
                 </div>
             `;
             break;
+
+        
     }
     
     if (paymentDetails) {

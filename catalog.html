@@ -235,29 +235,56 @@
         </div>
     </section>
 
-    <!-- Payment Section -->
-    <section id="payment" class="payment">
-        <div class="container">
-            <h2 class="section-title">Metode Pembayaran</h2>
-            <div class="payment-methods">
-                <div class="payment-card">
-                    <i class="fas fa-wallet"></i>
-                    <h3>DANA</h3>
-                    <p>Transfer via DANA</p>
-                </div>
-                <div class="payment-card">
-                    <i class="fas fa-credit-card"></i>
-                    <h3>GoPay</h3>
-                    <p>Bayar dengan GoPay</p>
-                </div>
-                <div class="payment-card">
-                    <i class="fas fa-shopping-bag"></i>
-                    <h3>ShopeePay</h3>
-                    <p>Pembayaran via ShopeePay</p>
-                </div>
+<!-- Payment Section -->
+<section id="payment" class="payment">
+    <div class="container">
+        <h2 class="section-title">Metode Pembayaran</h2>
+        <div class="payment-methods">
+            <!-- DANA -->
+            <div class="payment-card">
+                <i class="fas fa-wallet"></i>
+                <h3>DANA</h3>
+                <p>Transfer via DANA</p>
+            </div>
+
+            <!-- GoPay -->
+            <div class="payment-card">
+                <i class="fas fa-credit-card"></i>
+                <h3>GoPay</h3>
+                <p>Bayar dengan GoPay</p>
+            </div>
+
+            <!-- ShopeePay -->
+            <div class="payment-card">
+                <i class="fas fa-shopping-bag"></i>
+                <h3>ShopeePay</h3>
+                <p>Pembayaran via ShopeePay</p>
+            </div>
+
+            <!-- QRIS -->
+            <div class="payment-card">
+                <i class="fas fa-qrcode"></i>
+                <h3>QRIS</h3>
+                <p>Pembayaran cepat dengan QRIS</p>
+            </div>
+
+            <!-- PayPal -->
+            <div class="payment-card">
+                <i class="fab fa-paypal"></i>
+                <h3>PayPal</h3>
+                <p>Transfer via PayPal</p>
+            </div>
+
+            <!-- Binance -->
+            <div class="payment-card">
+                <i class="fas fa-coins"></i>
+                <h3>Binance</h3>
+                <p>Transfer USDT/crypto via Binance</p>
             </div>
         </div>
-    </section>
+    </div>
+</section>
+
 
     <!-- Contact Section -->
     <section id="contact" class="contact">
@@ -349,6 +376,16 @@
                             <i class="fas fa-shopping-bag"></i>
                             <span>ShopeePay</span>
                         </label>
+                        <label class="payment-option">
+                            <input type="radio" name="paymentMethod" value="paypal" required>
+                            <i class="fab fa-paypal"></i>
+                            <span>PayPal</span>
+                        </label>
+                        <label class="payment-option">
+                            <input type="radio" name="paymentMethod" value="binance" required>
+                            <i class="fas fa-coins"></i>
+                            <span>Binance</span>
+                        </label>
                     </div>
                 </div>
 
@@ -430,9 +467,15 @@
                             <p>5. Masukkan nominal pembayaran</p>
                             <p>6. Konfirmasi pembayaran</p>
                         </div>
+                        <div class="instruction-item" id="paypal-instruction" style="display: none;">
+                        <p><strong>PayPal:</strong></p>
+                        <p>1. Login ke akun PayPal</p>
+                        <p>2. Pilih menu "Send & Request"</p>
+                        <p>3. Masukkan email: <strong>RazorXiter957@gmail.com</strong></p>
+                        <p>4. Masukkan nominal sesuai paket</p>
+                        <p>5. Konfirmasi pembayaran</p>
                     </div>
-                </div>
-
+                    </div>
                 <div class="form-actions">
                     <button type="button" class="cancel-btn" onclick="closePaymentModal()">Batal</button>
                     <button type="submit" class="submit-btn">Konfirmasi Pembayaran</button>

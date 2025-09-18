@@ -1275,6 +1275,16 @@ body {
     justify-content: center;
 }
 
+.modal-footer {
+    position: sticky;
+    bottom: 0;
+    background: #2a2a2a; /* biar nyatu sama modal */
+    padding: 1rem;
+    text-align: center;
+    border-top: 2px solid #8b5cf6;
+    z-index: 10;
+}
+
 .cancel-btn,
 .submit-btn {
     padding: 12px 25px;
