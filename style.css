@@ -926,30 +926,20 @@ body {
 
 .modal-content {
     background: linear-gradient(145deg, #2a2a2a, #1e1e1e);
-    margin: 2% auto;
-    padding: 1rem;
+    margin: 1% auto;
+    padding: 1.5rem;
     border-radius: 15px;
     width: 95%;
     max-width: 600px;
-    height: 95vh;              /* tinggi hampir full layar */
+    max-height: 95vh;
     border: 2px solid #8b5cf6;
     box-shadow: 0 20px 40px rgba(0, 0, 0, 0.7);
     position: relative;
+    overflow-y: auto;
+    overflow-x: hidden;
     display: flex;
     flex-direction: column;
-    overflow-y: auto;          /* biar bisa discroll */
-    -webkit-overflow-scrolling: touch; /* biar smooth di iPhone */
 }
-
-/* khusus HP / layar kecil */
-@media (max-width: 768px) {
-  .modal-content {
-      height: 100vh;      /* full tinggi layar */
-      margin: 0;          /* biar nempel atas bawah */
-      border-radius: 0;   /* gaya fullscreen di HP */
-  }
-}
-
 
 .modal-content::-webkit-scrollbar {
     width: 8px;
@@ -2899,3 +2889,33 @@ body {
         font-size: 0.9rem;
     }
 }
+
+.modal-content {
+    background: linear-gradient(145deg, #2a2a2a, #1e1e1e);
+    margin: 2% auto;
+    padding: 1rem;
+    border-radius: 15px;
+    width: 95%;
+    max-width: 600px;
+    height: 95vh;
+    border: 2px solid #8b5cf6;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.7);
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+
+    padding-bottom: 80px; /* ✨ tambahin ruang buat tombol */
+}
+
+.form-actions {
+    position: sticky;   /* tombol tetap nempel di bawah */
+    bottom: 0;
+    background: #2a2a2a; /* kasih background biar gak transparan */
+    padding: 10px;
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+}
+
