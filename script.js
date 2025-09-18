@@ -236,7 +236,7 @@ function handlePaymentSubmission(event) {
 
 function sendToWhatsApp(game, selectedPackage, paymentMethod, whatsapp, file) {
     // Buat pesan WhatsApp
-    const message = `*KONFIRMASI PEMBAYARAN GAMESCHEAT.ID*
+    const message = `* GAMESCHEAT.ID*
 
 *Detail Pesanan:*
 • Game: ${game}
