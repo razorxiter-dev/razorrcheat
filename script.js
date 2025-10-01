@@ -158,6 +158,12 @@ function updatePrice() {
             'bulanan': { name: 'Paket Bulanan', price: 'Rp 50.000' },
             'season': { name: 'Paket Season', price: 'Rp 80.000' },
             'permanen': { name: 'Paket Permanen', price: 'Rp 250.000' }
+        },
+        'Bloodstrike': {
+            'mingguan': { name: 'Paket Mingguan', price: 'Rp 30.000' },
+            'bulanan': { name: 'Paket Bulanan', price: 'Rp 50.000' },
+            'season': { name: 'Paket Season', price: 'Rp 80.000' },
+            'permanen': { name: 'Paket Permanen', price: 'Rp 250.000' }
         }
     };
     
@@ -337,7 +343,7 @@ function showPaymentDetails(paymentMethod) {
                 <div class="payment-detail-content">
                     <h4>Pembayaran QRIS</h4>
                     <div class="qr-code">
-                        <img src="qris.jpg" 
+                        <img src="ALLPAY.jpeg" 
                              alt="QR Code Pembayaran" 
                              style="max-width: 200px; max-height: 200px; border-radius: 10px; border: 2px solid #8b5cf6; display: block; margin: 0 auto; background: white; padding: 10px;"
                              onerror="this.onerror=null; this.src='https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=gamescheat.id-payment'">

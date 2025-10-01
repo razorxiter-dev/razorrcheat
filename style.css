@@ -2909,3 +2909,109 @@ body {
     padding-bottom: 80px; /* ✨ tambahin ruang buat tombol */
 }
 
+/* ===================== Premium Red Theme Overrides (append-only) ===================== */
+:root {
+    --red-primary: #ef4444;
+    --red-accent: #f87171;
+    --red-deep: #b91c1c;
+    --red-glow: rgba(239, 68, 68, 0.5);
+}
+
+/* Header & Nav */
+.header { border-bottom: 2px solid var(--red-primary); }
+.logo h1 { color: var(--red-primary); }
+.logo i { color: var(--red-accent); }
+.hamburger span { background: var(--red-primary); }
+.nav-menu a:hover { color: var(--red-primary); text-shadow: 0 0 10px var(--red-glow); }
+.nav-menu a::after { background-color: var(--red-primary); }
+
+/* Hero accents */
+.hero { background: linear-gradient(rgba(0,0,0,0.7), rgba(185,28,28,0.3)), url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000"><defs><pattern id="grid" width="50" height="50" patternUnits="userSpaceOnUse"><path d="M 50 0 L 0 0 0 50" fill="none" stroke="%23ef4444" stroke-width="1" opacity="0.1"/></pattern></defs><rect width="100%" height="100%" fill="url(%23grid)"/></svg>'); }
+.hero::before { background: radial-gradient(circle at 20% 80%, rgba(239,68,68,0.1) 0%, transparent 50%), radial-gradient(circle at 80% 20%, rgba(248,113,113,0.1) 0%, transparent 50%), radial-gradient(circle at 40% 40%, rgba(239,68,68,0.05) 0%, transparent 50%); }
+.hero::after { background-image: linear-gradient(45deg, transparent 40%, rgba(239,68,68,0.06) 50%, transparent 60%), linear-gradient(-45deg, transparent 40%, rgba(248,113,113,0.06) 50%, transparent 60%); }
+.glitch-effect { background: linear-gradient(90deg, transparent 98%, rgba(239,68,68,0.1) 100%); }
+.particle { background: var(--red-primary); box-shadow: 0 0 10px var(--red-primary); }
+.matrix-column { background: linear-gradient(to bottom, transparent, var(--red-primary), transparent); }
+
+/* Titles and CTA */
+.cta-button { background: linear-gradient(45deg, var(--red-primary), var(--red-accent)); box-shadow: 0 4px 15px var(--red-glow); }
+.cta-button:hover { box-shadow: 0 6px 20px rgba(239,68,68,0.6); background: linear-gradient(45deg, var(--red-accent), var(--red-primary)); }
+.section-title { color: var(--red-primary); }
+.section-title::after { background: linear-gradient(45deg, var(--red-primary), var(--red-accent)); }
+
+/* Features section */
+.features { background: linear-gradient(135deg, #1f2937 0%, #0b0b0b 100%); }
+.security-notice { background: linear-gradient(135deg, rgba(239,68,68,0.1) 0%, rgba(248,113,113,0.1) 100%); border: 2px solid rgba(239,68,68,0.3); box-shadow: 0 8px 32px rgba(239,68,68,0.18); }
+.security-header i { color: var(--red-primary); }
+.security-main strong { color: var(--red-primary); }
+.security-item { background: rgba(239,68,68,0.10); border: 1px solid rgba(239,68,68,0.25); }
+.security-item:hover { background: rgba(239,68,68,0.20); box-shadow: 0 4px 20px rgba(239,68,68,0.30); }
+.security-item i { color: var(--red-primary); }
+
+/* Feature cards */
+.feature-card::before { background: linear-gradient(45deg, var(--red-primary), var(--red-accent)); }
+.feature-card:hover { border-color: var(--red-primary); box-shadow: 0 30px 60px rgba(239,68,68,0.25); }
+.feature-header i { color: var(--red-primary); text-shadow: 0 0 20px var(--red-glow); }
+.feature-card:hover .feature-header i { color: var(--red-accent); }
+.feature-list h4 { color: var(--red-primary); }
+.feature-list li:hover { color: var(--red-primary); text-shadow: 0 0 10px var(--red-glow); }
+
+/* Products */
+.product-card::before { background: linear-gradient(45deg, var(--red-primary), var(--red-accent)); }
+.product-card:hover { border-color: var(--red-primary); box-shadow: 0 20px 40px rgba(239,68,68,0.25); }
+.option { background: rgba(239,68,68,0.10); border-left: 3px solid var(--red-primary); }
+.option:hover { background: rgba(239,68,68,0.20); }
+.price { color: var(--red-primary); }
+.buy-button { background: linear-gradient(45deg, var(--red-primary), var(--red-accent)); }
+.buy-button:hover { background: linear-gradient(45deg, var(--red-accent), var(--red-primary)); box-shadow: 0 5px 15px var(--red-glow); }
+
+/* Payment */
+.payment-card::before { background: linear-gradient(45deg, var(--red-primary), var(--red-accent)); }
+.payment-card:hover { border-color: var(--red-primary); box-shadow: 0 15px 35px rgba(239,68,68,0.25); }
+.payment-card i { color: var(--red-primary); }
+
+/* Contact */
+.contact-item::before { background: linear-gradient(45deg, var(--red-primary), var(--red-accent)); }
+.contact-item:hover { border-color: var(--red-primary); box-shadow: 0 15px 35px rgba(239,68,68,0.3); }
+.contact-item i { color: var(--red-primary); }
+.contact-item:hover h3 { color: var(--red-accent); text-shadow: 0 0 15px rgba(248,113,113,0.6); }
+
+/* Footer */
+.footer { border-top: 2px solid var(--red-primary); }
+
+/* Modal + form accents */
+.modal-content { border: 2px solid var(--red-primary); }
+.close { color: var(--red-primary); }
+.close:hover { color: var(--red-accent); }
+.modal-content h2 { color: var(--red-primary); }
+.modal-payment-card:hover { border-color: var(--red-primary); background: rgba(239,68,68,0.15); }
+.modal-payment-card i { color: var(--red-primary); }
+.order-info { border-left: 4px solid var(--red-primary); }
+.order-info h3 { color: var(--red-primary); }
+.form-group label { color: var(--red-primary); }
+.form-group input, .form-group select, .form-group textarea { border: 2px solid rgba(239,68,68,0.3); }
+.form-group input:focus, .form-group select:focus, .form-group textarea:focus { border-color: var(--red-primary); box-shadow: 0 0 10px var(--red-glow); }
+.payment-option { border: 2px solid rgba(239,68,68,0.3); background: rgba(239,68,68,0.10); }
+.payment-option:hover { border-color: var(--red-primary); background: rgba(239,68,68,0.20); }
+.payment-option i { color: var(--red-primary); }
+.payment-option input[type="radio"]:checked + i + span { color: var(--red-primary); }
+.payment-option input[type="radio"]:checked ~ * { color: var(--red-primary); }
+.payment-option:has(input[type="radio"]:checked) { border-color: var(--red-primary); background: rgba(239,68,68,0.20); box-shadow: 0 0 15px var(--red-glow); }
+.payment-details, .payment-instructions { border-color: var(--red-primary); }
+.payment-instructions h4 { color: var(--red-primary); }
+.payment-detail-content h4 { color: var(--red-primary); }
+.payment-detail-content .qr-code { border: 2px solid rgba(239,68,68,0.30); box-shadow: 0 4px 20px rgba(239,68,68,0.12); }
+.payment-detail-content .account-info { border-left: 4px solid var(--red-primary); }
+.payment-detail-content .account-info .account-number { color: var(--red-primary); background: rgba(239,68,68,0.10); }
+.payment-detail-content .copy-btn { background: linear-gradient(45deg, var(--red-primary), var(--red-accent)); }
+.payment-detail-content .copy-btn:hover { background: linear-gradient(45deg, var(--red-accent), var(--red-primary)); }
+
+/* Buttons */
+.submit-btn { background: linear-gradient(45deg, var(--red-primary), var(--red-accent)); }
+.submit-btn:hover { background: linear-gradient(45deg, var(--red-accent), var(--red-primary)); box-shadow: 0 5px 15px var(--red-glow); }
+.remove-file { background: var(--red-primary); }
+.remove-file:hover { background: var(--red-accent); }
+
+/* Scrollbars */
+::-webkit-scrollbar-thumb { background: linear-gradient(45deg, var(--red-primary), var(--red-accent)); }
+.modal-content::-webkit-scrollbar-thumb { background: linear-gradient(45deg, var(--red-primary), var(--red-accent)); }

@@ -113,13 +113,7 @@
 
   <!-- VIDEO WRAPPER (YouTube Embed) -->
   <div class="feature-video">
-    <iframe
-      src="https://www.youtube.com/embed/4JTxTb5oH6E?autoplay=1&mute=1&loop=1&playlist=4JTxTb5oH6E"
-      title="Mobile Legends Features"
-      frameborder="0"
-      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-      allowfullscreen>
-    </iframe>
+    <img src="FTRML.jpeg" alt="Mobile Legends Features" style="width: 100%; height: 100%; object-fit: contain; border-radius: 10px;">
   </div>
 
   <div class="feature-list">
@@ -177,13 +171,7 @@
 
   <!-- VIDEO WRAPPER (YouTube Embed) -->
   <div class="feature-video">
-    <iframe
-      src="https://www.youtube.com/embed/wa2cmqysYrs?autoplay=1&mute=1&loop=1&playlist=wa2cmqysYrs"
-      title="Free Fire Features"
-      frameborder="0"
-      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-      allowfullscreen>
-    </iframe>
+    <img src="FTRFF.jpeg" alt="Free Fire Features" style="width: 100%; height: 100%; object-fit: contain; border-radius: 10px;">
   </div>
 
   <div class="feature-list">
@@ -241,13 +229,7 @@
 
   <!-- VIDEO WRAPPER (YouTube Embed) -->
   <div class="feature-video">
-    <iframe
-      src="https://www.youtube.com/embed/1RfYwDSlVtQ?autoplay=1&mute=1&loop=1&playlist=1RfYwDSlVtQ"
-      title="PUBG Mobile Features"
-      frameborder="0"
-      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-      allowfullscreen>
-    </iframe>
+    <img src="FTRPUBG.jpeg" alt="PUBG Mobile Features" style="width: 100%; height: 100%; object-fit: contain; border-radius: 10px;">
   </div>
 
   <div class="feature-list">
@@ -321,6 +303,19 @@
 }
 </style>
 
+<!-- Ensure images inside feature-video fill the aspect-ratio wrapper -->
+<style>
+.feature-video img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  border: 0;
+}
+</style>
+
 
 <!-- 8BL -->
 
@@ -371,12 +366,9 @@
     <h3 class="text-glow magic-text">8 BALL POOL</h3>
   </div>
 
-  <!-- VIDEO WRAPPER (Thumbnail klik aja dulu) -->
-  <div class="feature-video" id="video-8ball">
-    <div class="video-thumbnail" onclick="playVideo8Ball()">
-      <img src="https://img.youtube.com/vi/1GzvSXHmoNQ/hqdefault.jpg" alt="8 BALL POOL Thumbnail">
-      <div class="play-button">▶</div>
-    </div>
+  <!-- IMAGE WRAPPER -->
+  <div class="feature-video">
+    <img src="FTR8BP.jpeg" alt="8 BALL POOL Features" style="width: 100%; height: 100%; object-fit: contain; border-radius: 10px;">
   </div>
 
   <div class="feature-list">
@@ -393,19 +385,7 @@
   </div>
 </div>
 
-<!-- ===== SCRIPT: Ganti thumbnail dengan iframe saat diklik ===== -->
-<script>
-function playVideo8Ball() {
-  const wrapper = document.getElementById("video-8ball");
-  wrapper.innerHTML = `
-    <iframe 
-      src="https://www.youtube.com/embed/1GzvSXHmoNQ?autoplay=1&mute=1&loop=1&playlist=1GzvSXHmoNQ"
-      frameborder="0"
-      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-      allowfullscreen>
-    </iframe>`;
-}
-</script>
+<!-- removed video swap script for 8 Ball Pool; using static image -->
 
 
                 <!-- call of duty mobile -->
@@ -417,9 +397,7 @@ function playVideo8Ball() {
 
   <!-- VIDEO WRAPPER -->
   <div class="feature-video">
-    <video controls autoplay muted loop playsinline poster="CCD.jpg">
-      Browser kamu tidak mendukung video.
-    </video>
+    <img src="FTRCODM.jpeg" alt="Call of Duty Mobile Features" style="width: 100%; height: 100%; object-fit: contain; border-radius: 10px;">
   </div>
 
   <div class="feature-list">
@@ -472,7 +450,6 @@ function playVideo8Ball() {
 </style>
 
 
-
  <!-- DELTA FORCE -->
 <!-- ===== FEATURE CARD: DELTA FORCE ===== -->
 <div class="feature-card slide-in-right animate-delay-2">
@@ -483,13 +460,7 @@ function playVideo8Ball() {
 
   <!-- VIDEO WRAPPER (YouTube Embed) -->
   <div class="feature-video">
-    <iframe
-      src="https://www.youtube.com/embed/aX1olDzHDR4?autoplay=1&mute=1&loop=1&playlist=aX1olDzHDR4"
-      title="Delta Force Features"
-      frameborder="0"
-      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-      allowfullscreen>
-    </iframe>
+    <img src="FTRDFS.jpeg" alt="Delta Force Features" style="width: 100%; height: 100%; object-fit: contain; border-radius: 10px;">
   </div>
 
   <div class="feature-list">
@@ -509,6 +480,39 @@ function playVideo8Ball() {
       <li><i class="fas fa-check"></i> OPS WORLD LOOTBOX </li>
       <li><i class="fas fa-check"></i> Mode Game Warfare </li>
       <li><i class="fas fa-check"></i> TOOLS MENU </li>
+    </ul>
+  </div>
+</div>
+
+<!-- ===== FEATURE CARD: BLOODSTRIKE ===== -->
+<div class="feature-card slide-in-left animate-delay-1">
+  <div class="feature-header">
+    <i class="fas fa-bolt wave-text floating-icon sparkle-text"></i>
+    <h3 class="text-glow magic-text">Bloodstrike</h3>
+  </div>
+
+  <!-- IMAGE WRAPPER -->
+  <div class="feature-video">
+    <img src="FTRBSX.jpeg" alt="Bloodstrike" style="width: 100%; height: 100%; object-fit: contain; border-radius: 10px; background: transparent;">
+  </div>
+
+  <div class="feature-list">
+    <h4>Fitur Utama:</h4>
+    <ul>
+      <li><i class="fas fa-check"></i> AIM BOT</li>
+      <li><i class="fas fa-check"></i> AIM SILENT</li>
+      <li><i class="fas fa-check"></i> AIM FOV</li>
+      <li><i class="fas fa-check"></i> AUTO HEADSHOT</li>
+      <li><i class="fas fa-check"></i> ESP SKELETON</li>
+      <li><i class="fas fa-check"></i> ESP DISTANCE</li>
+      <li><i class="fas fa-check"></i> ESP HEALTH</li>
+      <li><i class="fas fa-check"></i> ESP LINE</li>
+      <li><i class="fas fa-check"></i> ESP BOX</li>
+      <li><i class="fas fa-check"></i> FPS UNLOCK TO 120</li>
+      <li><i class="fas fa-check"></i> DAMAGE UP ++++</li>
+      <li><i class="fas fa-check"></i> TOOLS MENU</li>
+      <li><i class="fas fa-check"></i> MAGIC BULLET</li>
+      <li><i class="fas fa-check"></i> MAGIC BULLET TRACKING</li>
     </ul>
   </div>
 </div>
