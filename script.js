@@ -1,269 +1,664 @@
-const products = [
-    {id:'clean-001', name:'CLEANER CHEATS (PC)', desc:'Tools ini berfungsi untuk menghapus jejak riwayat cheat di komputer anda. untuk menghindari terhadap check pc di kompetitif', priceLabel:[
-        'Rp150.000 / 15$ Perbulan',
-        'Rp350.000 / 25$ Permanen'
-    ], image:'TOOLS CLEAN.jpeg', tag:'cleaner'},
-    {id:'stream-002', name:'STREAM PANEL PC', desc:'panel stream adalah panel canggih tanpa jejak cheat, dan bisa inject melalui hp. cocok untuk kompetitif laga atau turnament', priceLabel:[
-        'Rp100.000 10$ 7 DAY',
-        'Rp250.000 20$ 30 DAY',
-        'Rp350.000 25$ PERMANEN'
-    ], image:'STREAM.jpeg', tag:'stream'},
-    {id:'esp-003', name:'ESP STREAM PC', desc:'esp stream only bisa di combo & digabung dengan stream panel', priceLabel:[
-        'Rp50.000 5$ 7 DAY',
-        'Rp100.000 10$ 30 DAY',
-        'Rp150.000 15$ 60 DAY'
-    ], image:'ESP.png', tag:'esp'},
-    {id:'elite-004', name:'BIOS ELITE PANEL', desc:'Panel canggih kelas Elite, Tanpa jejak Cheat & keunggulan yang tidak tertandingi', priceLabel:[
-        'Rp6.000.000 500$ PERMANENT'
-    ], image:'bios.jpeg', tag:'elite'},
-    {id:'root-005', name:'ROOT', desc:'Root Android adalah proses untuk mendapatkan akses penuh (superuser) ke sistem operasi Android, bisa digunakan untuk menggunakan program cheat dan meningkatkan peforma ponsel. root ini sudah disediakan anti check byypas. aman untuk kualif dan kompetisi', priceLabel:[
-        'Rp250.000 20$'
-    ], image:'ROOT.jpeg', tag:'root'},
-    {id:'bypass-006', name:'BYYPAS EMULATOR', desc:'Byypas emulator Untuk Hide & Samaran sebagai phone di emulator anda. menghilangkan logo pc di emulator', priceLabel:[
-        'Rp60.000 6$ 7 DAY',
-        'Rp120.000 13$ 2 WEEK',
-        'Rp170.000 15$ 1 MONTH'
-    ], image:'BYYPAS.jpeg', tag:'bypass'}
-];
+// Mobile Navigation Toggle
+const hamburger = document.querySelector('.hamburger');
+const navMenu = document.querySelector('.nav-menu');
 
-const formatIDR = (num) => new Intl.NumberFormat('id-ID', {style:'currency', currency:'IDR', maximumFractionDigits:0}).format(num);
+hamburger.addEventListener('click', () => {
+    hamburger.classList.toggle('active');
+    navMenu.classList.toggle('active');
+});
 
-const els = {
-    grid: document.getElementById('productGrid'),
-    count: document.getElementById('cartCount'),
-    toast: document.getElementById('toast'),
-    year: document.getElementById('year'),
-    searchInput: document.getElementById('searchInput'),
-    searchButton: document.getElementById('searchButton'),
-    navToggle: document.getElementById('navToggle'),
-    navMenu: document.getElementById('navMenu'),
-    matrix: document.getElementById('matrixOverlay'),
-    bgAudio: document.getElementById('bgAudio'),
-    soundToggle: document.getElementById('soundToggle'),
-    soundOverlay: document.getElementById('soundOverlay'),
-    soundEnable: document.getElementById('soundEnable'),
-    paymentModal: document.getElementById('paymentModal'),
-    paymentBackdrop: document.getElementById('paymentBackdrop'),
-    paymentClose: document.getElementById('paymentClose'),
-    payForm: document.getElementById('payForm'),
-    payProduct: document.getElementById('payProduct'),
-    payMethod: document.getElementById('payMethod'),
-    payNote: document.getElementById('payNote'),
-    payCancel: document.getElementById('payCancel'),
-    payPackageRow: document.getElementById('payPackageRow'),
-    payPackage: document.getElementById('payPackage'),
-    payDeviceRow: document.getElementById('payDeviceRow'),
-    payDevice: document.getElementById('payDevice')
-};
+// Close mobile menu when clicking on a link
+document.querySelectorAll('.nav-menu a').forEach(link => {
+    link.addEventListener('click', () => {
+        hamburger.classList.remove('active');
+        navMenu.classList.remove('active');
+    });
+});
 
-let cartCount = 0;
+// Smooth scrolling for navigation links
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+            target.scrollIntoView({
+                behavior: 'smooth',
+                block: 'start'
+            });
+        }
+    });
+});
 
-function renderProducts(list){
-    const fragment = document.createDocumentFragment();
-    list.forEach(p => {
-        const card = document.createElement('article');
-        card.className = 'card';
-        const priceHtml = p.priceLabel ? `<ul class="price-list">${p.priceLabel.map(line => `<li>${line}</li>`).join('')}</ul>` : formatIDR(p.price);
-        card.innerHTML = `
-            <div class="card__media">
-                <img src="${p.image}" alt="${p.name}">
-                <span class="card__chip">${p.tag}</span>
-            </div>
-            <div class="card__body">
-                <h3 class="card__title">${p.name}</h3>
-                ${p.desc ? `<p class=\"card__desc\">${p.desc}</p>` : ''}
-                <div class="card__price">${priceHtml}</div>
-                <div class="card__actions">
-                    <button class="btn btn--primary" data-buy="${p.id}">Beli Sekarang</button>
+// Handle cross-page anchor links (e.g., features.html#features)
+document.querySelectorAll('a[href*="#"]').forEach(link => {
+    link.addEventListener('click', function (e) {
+        const href = this.getAttribute('href');
+        if (href.includes('.html#')) {
+            // This is a cross-page anchor link
+            const [page, anchor] = href.split('#');
+            
+            // Check if we're already on the target page
+            if (window.location.pathname.includes(page)) {
+                // Same page, use smooth scroll
+                e.preventDefault();
+                const target = document.querySelector('#' + anchor);
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            } else {
+                // Different page, allow normal navigation
+                // Don't prevent default - let browser navigate
+                return true;
+            }
+        }
+    });
+});
+
+// Handle anchor scrolling on page load
+window.addEventListener('load', function() {
+    const hash = window.location.hash;
+    if (hash) {
+        setTimeout(() => {
+            const target = document.querySelector(hash);
+            if (target) {
+                target.scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'start'
+                });
+            }
+        }, 100);
+    }
+});
+
+// Function to scroll to products section
+function scrollToProducts() {
+    const productsSection = document.getElementById('products');
+    if (productsSection) {
+        productsSection.scrollIntoView({
+            behavior: 'smooth',
+            block: 'start'
+        });
+    }
+}
+
+// Payment Modal Functions
+let currentProduct = '';
+let currentPrice = '';
+
+function openPaymentModal(productName) {
+    currentProduct = productName;
+    const modal = document.getElementById('paymentModal');
+    const gameElement = document.getElementById('selectedGame');
+    const packageElement = document.getElementById('selectedPackage');
+    const priceElement = document.getElementById('selectedPrice');
+    
+    if (gameElement) gameElement.textContent = productName;
+    if (packageElement) packageElement.textContent = 'Pilih paket terlebih dahulu';
+    if (priceElement) priceElement.textContent = 'Pilih paket terlebih dahulu';
+    
+    // Set game selection
+    const gameSelect = document.getElementById('gameSelect');
+    if (gameSelect) {
+        gameSelect.value = productName;
+    }
+    
+    // Reset form
+    const paymentForm = document.querySelector('.payment-form');
+    if (paymentForm) {
+        paymentForm.reset();
+    }
+    
+    // Set game selection again after reset
+    if (gameSelect) {
+        gameSelect.value = productName;
+    }
+    
+    // Clear payment details
+    const paymentDetails = document.getElementById('paymentDetails');
+    if (paymentDetails) {
+        paymentDetails.innerHTML = '';
+    }
+    
+    // Clear file preview
+    const filePreview = document.getElementById('filePreview');
+    if (filePreview) {
+        filePreview.style.display = 'none';
+    }
+    
+    modal.style.display = 'block';
+    document.body.style.overflow = 'hidden';
+}
+
+// Update price when package is selected
+function updatePrice() {
+    const gameSelect = document.getElementById('gameSelect');
+    const packageSelect = document.getElementById('packageSelect');
+    const gameElement = document.getElementById('selectedGame');
+    const packageElement = document.getElementById('selectedPackage');
+    const priceElement = document.getElementById('selectedPrice');
+    
+    const prices = {
+        'Mobile Legends': {
+            'mingguan': { name: 'Paket Mingguan', price: 'Rp 30.000' },
+            'bulanan': { name: 'Paket Bulanan', price: 'Rp 50.000' },
+            'season': { name: 'Paket Season', price: 'Rp 80.000' },
+            'permanen': { name: 'Paket Permanen', price: 'Rp 250.000' }
+        },
+        'Free Fire': {
+            'mingguan': { name: 'Paket Mingguan', price: 'Rp 30.000' },
+            'bulanan': { name: 'Paket Bulanan', price: 'Rp 50.000' },
+            'season': { name: 'Paket Season', price: 'Rp 80.000' },
+            'permanen': { name: 'Paket Permanen', price: 'Rp 250.000' }
+        },
+        'PUBG Mobile': {
+            'mingguan': { name: 'Paket Mingguan', price: 'Rp 30.000' },
+            'bulanan': { name: 'Paket Bulanan', price: 'Rp 50.000' },
+            'season': { name: 'Paket Season', price: 'Rp 80.000' },
+            'permanen': { name: 'Paket Permanen', price: 'Rp 250.000' }
+        },
+        'Bloodstrike': {
+            'mingguan': { name: 'Paket Mingguan', price: 'Rp 30.000' },
+            'bulanan': { name: 'Paket Bulanan', price: 'Rp 50.000' },
+            'season': { name: 'Paket Season', price: 'Rp 80.000' },
+            'permanen': { name: 'Paket Permanen', price: 'Rp 250.000' }
+        }
+    };
+    
+    // Update current product if game selection changed
+    if (gameSelect && gameSelect.value) {
+        currentProduct = gameSelect.value;
+        if (gameElement) gameElement.textContent = currentProduct;
+    }
+    
+    if (packageSelect && packageSelect.value && currentProduct) {
+        const selectedPackage = prices[currentProduct][packageSelect.value];
+        if (selectedPackage) {
+            if (packageElement) packageElement.textContent = selectedPackage.name;
+            if (priceElement) priceElement.textContent = selectedPackage.price;
+        }
+    } else {
+        if (packageElement) packageElement.textContent = 'Pilih paket terlebih dahulu';
+        if (priceElement) priceElement.textContent = 'Pilih paket terlebih dahulu';
+    }
+}
+
+// Handle form submission - Direct to WhatsApp
+function handlePaymentSubmission(event) {
+    event.preventDefault();
+    
+    const formData = new FormData(event.target);
+    const game = formData.get('game');
+    const selectedPackage = formData.get('package');
+    const paymentMethod = formData.get('paymentMethod');
+    const whatsapp = formData.get('whatsapp');
+    const file = formData.get('paymentProof');
+    
+    // Validasi form
+    if (!game || !selectedPackage || !paymentMethod || !whatsapp || !file) {
+        alert('Semua field harus diisi!');
+        return;
+    }
+    
+    // Validasi file
+    if (file.size === 0) {
+        alert('Bukti pembayaran harus diupload!');
+        return;
+    }
+    
+    if (file.size > 5 * 1024 * 1024) { // 5MB
+        alert('Ukuran file terlalu besar! Maksimal 5MB');
+        return;
+    }
+    
+    if (!file.type.startsWith('image/')) {
+        alert('File harus berupa gambar!');
+        return;
+    }
+    
+    // Tampilkan loading
+    showLoadingModal();
+    
+    // Simulasi proses (3 detik)
+    setTimeout(() => {
+        hideLoadingModal();
+        
+        // Kirim ke WhatsApp dengan bukti pembayaran
+        sendToWhatsApp(game, selectedPackage, paymentMethod, whatsapp, file);
+        
+        // Tutup modal
+        document.getElementById('paymentModal').style.display = 'none';
+        
+        // Reset form
+        event.target.reset();
+        document.getElementById('filePreview').style.display = 'none';
+        document.getElementById('paymentDetails').innerHTML = '';
+        
+        alert('PEMBAYARAN SEDANG DIKONFIRMASI HARAP TUNGGU SEBENTAR...');
+    }, 3000);
+}
+
+function sendToWhatsApp(game, selectedPackage, paymentMethod, whatsapp, file) {
+    // Buat pesan WhatsApp
+    const message = `* GAMESCHEAT.ID*
+
+*Detail Pesanan:*
+• Game: ${game}
+• Paket: ${selectedPackage}
+• Metode Pembayaran: ${paymentMethod}
+• WhatsApp Pembeli: ${whatsapp}
+
+*Instruksi Pembayaran:*
+${getPaymentInstructions(paymentMethod)}
+
+*Catatan:* 
+Setelah melakukan pembayaran, silakan kirim bukti pembayaran ke nomor WhatsApp ini untuk konfirmasi.
+
+Terima kasih telah memilih gamescheat.id! 🎮`;
+
+    // Encode pesan untuk URL WhatsApp
+    const encodedMessage = encodeURIComponent(message);
+    const whatsappUrl = `https://wa.me/6283857228661?text=${encodedMessage}`;
+    
+    // Buka WhatsApp
+    window.open(whatsappUrl, '_blank');
+    
+    // Tampilkan pesan sukses
+    alert('WhatsApp telah dibuka! Silakan kirim bukti pembayaran Anda untuk konfirmasi.');
+}
+
+function getPaymentInstructions(paymentMethod) {
+    switch(paymentMethod) {
+        case 'qris':
+            return 'Scan QRIS yang tersedia di website kami.';
+        case 'dana':
+            return 'Transfer ke DANA: 083857228661';
+        case 'gopay':
+            return 'Transfer ke GoPay: 083857228657';
+        case 'shopeepay':
+            return 'Transfer ke ShopeePay: 083857228657';
+        default:
+            return 'Pilih metode pembayaran yang tersedia.';
+    }
+}
+
+// Function to show loading modal
+function showLoadingModal() {
+    const loadingModal = document.getElementById('loadingModal');
+    loadingModal.style.display = 'block';
+    document.body.style.overflow = 'hidden';
+}
+
+// Function to hide loading modal
+function hideLoadingModal() {
+    const loadingModal = document.getElementById('loadingModal');
+    loadingModal.style.display = 'none';
+    document.body.style.overflow = 'auto';
+}
+
+// Function to handle file upload preview
+function handleFileUpload() {
+    const fileInput = document.getElementById('paymentProof');
+    const filePreview = document.getElementById('filePreview');
+    const fileName = filePreview.querySelector('.file-name');
+    
+    if (fileInput.files && fileInput.files.length > 0) {
+        const file = fileInput.files[0];
+        fileName.textContent = file.name;
+        filePreview.style.display = 'flex';
+    } else {
+        filePreview.style.display = 'none';
+    }
+}
+
+// Function to remove uploaded file
+function removeFile() {
+    const fileInput = document.getElementById('paymentProof');
+    const filePreview = document.getElementById('filePreview');
+    
+    fileInput.value = '';
+    filePreview.style.display = 'none';
+}
+
+// Function to show payment details
+function showPaymentDetails(paymentMethod) {
+    const paymentDetails = document.getElementById('paymentDetails');
+    
+    // Set radio button
+    const radioButton = document.querySelector(`input[name="paymentMethod"][value="${paymentMethod}"]`);
+    if (radioButton) {
+        radioButton.checked = true;
+    }
+    
+    // Debug: Log payment method
+    console.log('Payment method selected:', paymentMethod);
+    
+    let content = '';
+    
+    switch(paymentMethod) {
+        case 'qris':
+            content = `
+                <div class="payment-detail-content">
+                    <h4>Pembayaran QRIS</h4>
+                    <div class="qr-code">
+                        <img src="ALLPAY.jpeg" 
+                             alt="QR Code Pembayaran" 
+                             style="max-width: 200px; max-height: 200px; border-radius: 10px; border: 2px solid #8b5cf6; display: block; margin: 0 auto; background: white; padding: 10px;"
+                             onerror="this.onerror=null; this.src='https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=gamescheat.id-payment'">
+                        <p style="text-align: center; color: #8b5cf6; font-size: 12px; margin: 10px 0 0 0; font-weight: bold;">QR CODE PEMBAYARAN</p>
+                        <p style="text-align: center; color: #e2e8f0; font-size: 10px; margin: 5px 0 0 0;">Scan dengan aplikasi mobile banking</p>
+                    </div>
                 </div>
+            `;
+            break;
+            
+        case 'dana':
+            content = `
+                <div class="payment-detail-content">
+                    <h4>Pembayaran DANA</h4>
+                    <div class="account-info">
+                        <p><strong>Nomor DANA:</strong></p>
+                        <div class="account-number">083857228661</div>
+                        <button class="copy-btn" onclick="copyToClipboard('083857228661')">Salin Nomor</button>
+                    </div>
+                </div>
+            `;
+            break;
+            
+        case 'gopay':
+            content = `
+                <div class="payment-detail-content">
+                    <h4>Pembayaran GoPay</h4>
+                    <div class="account-info">
+                        <p><strong>Nomor GoPay:</strong></p>
+                        <div class="account-number">083857228657</div>
+                        <button class="copy-btn" onclick="copyToClipboard('083857228657')">Salin Nomor</button>
+                    </div>
+                </div>
+            `;
+            break;
+
+            case 'paypal':
+        content = `
+            <div class="payment-detail-content">
+                <h4>Pembayaran PayPal</h4>
+                <div class="account-info">
+                    <p><strong>Email PayPal:</strong></p>
+                    <div class="account-number">RazorXiter957@gmail.com</div>
+                    <button class="copy-btn" onclick="copyToClipboard('RazorXiter957@gmail.com')">Salin Email</button>
+                </div>
+                <p style="font-size: 12px; color: #94a3b8; margin-top: 10px;">
+                    Pastikan pilih metode <strong>Friends & Family</strong> agar tidak ada biaya tambahan.
+                </p>
             </div>
         `;
-        fragment.appendChild(card);
+        break;
+
+    case 'binance':
+        content = `
+            <div class="payment-detail-content">
+                <h4>Pembayaran Binance</h4>
+                <div class="account-info">
+                    <p><strong>Binance ID:</strong></p>
+                    <div class="account-number">123456789</div>
+                    <button class="copy-btn" onclick="copyToClipboard('123456789')">Salin ID</button>
+                </div>
+                <p style="font-size: 12px; color: #94a3b8; margin-top: 10px;">
+                    Bisa transfer USDT (TRC20/BEP20). Pastikan jaringan sesuai!
+                </p>
+            </div>
+        `;
+        break;
+
+            
+        case 'shopeepay':
+            content = `
+                <div class="payment-detail-content">
+                    <h4>Pembayaran ShopeePay</h4>
+                    <div class="account-info">
+                        <p><strong>Nomor ShopeePay:</strong></p>
+                        <div class="account-number">083857228657</div>
+                        <button class="copy-btn" onclick="copyToClipboard('083857228657')">Salin Nomor</button>
+                    </div>
+                </div>
+            `;
+            break;
+
+        
+    }
+    
+    if (paymentDetails) {
+        paymentDetails.innerHTML = content;
+        
+        // Debug: Test QR Code loading for QRIS
+        if (paymentMethod === 'qris') {
+            setTimeout(() => {
+                const qrImg = paymentDetails.querySelector('.qr-code img');
+                if (qrImg) {
+                    console.log('QR Image element found:', qrImg);
+                    console.log('QR Image src:', qrImg.src);
+                    console.log('QR Image complete:', qrImg.complete);
+                    console.log('QR Image naturalWidth:', qrImg.naturalWidth);
+                    
+                    // Test if image loads
+                    qrImg.onload = function() {
+                        console.log('QR Image loaded successfully!');
+                        console.log('Image dimensions:', qrImg.naturalWidth + 'x' + qrImg.naturalHeight);
+                    };
+                    
+                    qrImg.onerror = function() {
+                        console.log('QR Image failed to load, using fallback');
+                        console.log('Failed URL:', qrImg.src);
+                    };
+                    
+                    // Force reload if not loaded after 2 seconds
+                    setTimeout(() => {
+                        if (!qrImg.complete || qrImg.naturalWidth === 0) {
+                            console.log('Image still not loaded, forcing reload...');
+                            const originalSrc = qrImg.src;
+                            qrImg.src = '';
+                            qrImg.src = originalSrc;
+                        }
+                    }, 2000);
+                } else {
+                    console.log('QR Image element not found!');
+                }
+            }, 100);
+        }
+    }
+    
+    // Show/hide payment instructions
+    const instructionItems = document.querySelectorAll('.instruction-item');
+    instructionItems.forEach(item => {
+        item.style.display = 'none';
     });
-    els.grid.innerHTML = '';
-    els.grid.appendChild(fragment);
+    
+    const instructionItem = document.getElementById(`${paymentMethod}-instruction`);
+    if (instructionItem) {
+        instructionItem.style.display = 'block';
+    }
 }
 
-function showToast(message){
-    els.toast.textContent = message;
-    els.toast.classList.add('toast--show');
+// Function to copy text to clipboard
+function copyToClipboard(text) {
+    navigator.clipboard.writeText(text).then(function() {
+        // Show success message
+        const button = event.target;
+        const originalText = button.textContent;
+        button.textContent = 'Tersalin!';
+        button.style.background = 'linear-gradient(45deg, #10b981, #059669)';
+        
+        setTimeout(() => {
+            button.textContent = originalText;
+            button.style.background = 'linear-gradient(45deg, #dc2626, #ef4444)';
+        }, 2000);
+    }).catch(function(err) {
+        console.error('Could not copy text: ', err);
+        alert('Gagal menyalin nomor. Silakan salin manual: ' + text);
+    });
+}
+
+// Function to open WhatsApp from contact section
+function openWhatsApp() {
+    const whatsappMessage = `Halo, saya tertarik dengan layanan cheat gaming dari GameCheat.id. Bisa info lebih lanjut?`;
+    const whatsappUrl = `https://wa.me/6283857228661?text=${encodeURIComponent(whatsappMessage)}`;
+    window.open(whatsappUrl, '_blank');
+}
+
+// Close modal functions
+function closeModal() {
+    const modal = document.getElementById('paymentModal');
+    modal.style.display = 'none';
+    document.body.style.overflow = 'auto';
+}
+
+function closePaymentModal() {
+    const modal = document.getElementById('paymentModal');
+    modal.style.display = 'none';
+    document.body.style.overflow = 'auto';
+}
+
+// Close modal when clicking outside
+window.addEventListener('click', (event) => {
+    const modal = document.getElementById('paymentModal');
+    if (event.target === modal) {
+        closeModal();
+    }
+});
+
+// Close modal with X button
+document.querySelector('.close').addEventListener('click', closeModal);
+
+// Close modal with Escape key
+document.addEventListener('keydown', (event) => {
+    if (event.key === 'Escape') {
+        closeModal();
+    }
+});
+
+// Add scroll effect to header
+window.addEventListener('scroll', () => {
+    const header = document.querySelector('.header');
+    if (window.scrollY > 100) {
+        header.style.background = 'rgba(0, 0, 0, 0.98)';
+    } else {
+        header.style.background = 'rgba(0, 0, 0, 0.95)';
+    }
+});
+
+// Add animation to product cards on scroll
+const observerOptions = {
+    threshold: 0.1,
+    rootMargin: '0px 0px -50px 0px'
+};
+
+const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            entry.target.style.opacity = '1';
+            entry.target.style.transform = 'translateY(0)';
+        }
+    });
+}, observerOptions);
+
+// Observe all product cards
+document.querySelectorAll('.product-card').forEach(card => {
+    card.style.opacity = '0';
+    card.style.transform = 'translateY(30px)';
+    card.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+    observer.observe(card);
+});
+
+// Observe all feature cards
+document.querySelectorAll('.feature-card').forEach(card => {
+    card.style.opacity = '0';
+    card.style.transform = 'translateY(30px)';
+    card.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+    observer.observe(card);
+});
+
+// Add click effect to buttons
+document.querySelectorAll('.buy-button').forEach(button => {
+    button.addEventListener('click', function() {
+        this.style.transform = 'scale(0.95)';
+        setTimeout(() => {
+            this.style.transform = 'scale(1)';
+        }, 150);
+    });
+});
+
+// Add hover effect to payment cards
+document.querySelectorAll('.modal-payment-card').forEach(card => {
+    card.addEventListener('mouseenter', function() {
+        this.style.transform = 'translateY(-5px) scale(1.02)';
+    });
+    
+    card.addEventListener('mouseleave', function() {
+        this.style.transform = 'translateY(0) scale(1)';
+    });
+});
+
+// Initialize page
+document.addEventListener('DOMContentLoaded', function() {
+    // Add fade-in animation to hero content
+    const heroContent = document.querySelector('.hero-content');
+    heroContent.style.opacity = '0';
+    heroContent.style.transform = 'translateY(30px)';
+    
     setTimeout(() => {
-        els.toast.classList.remove('toast--show');
-    }, 1800);
-}
-
-function attachEvents(){
-    document.addEventListener('click', (e) => {
-        const buyBtn = e.target.closest('button[data-buy]');
-        if(buyBtn){
-            const id = buyBtn.getAttribute('data-buy');
-            const item = products.find(p => p.id === id);
-            if(item){
-                openPaymentModal(item);
-            }
+        heroContent.style.transition = 'opacity 1s ease, transform 1s ease';
+        heroContent.style.opacity = '1';
+        heroContent.style.transform = 'translateY(0)';
+    }, 100);
+    
+    // Add typing effect to hero title
+    const heroTitle = document.querySelector('.hero-content h1');
+    const originalText = heroTitle.textContent;
+    heroTitle.textContent = '';
+    
+    let i = 0;
+    const typeWriter = () => {
+        if (i < originalText.length) {
+            heroTitle.textContent += originalText.charAt(i);
+            i++;
+            setTimeout(typeWriter, 100);
         }
-    });
-
-    els.searchButton.addEventListener('click', () => {
-        const q = (els.searchInput.value || '').toLowerCase().trim();
-        if(!q){
-            renderProducts(products);
-            return;
-        }
-        const filtered = products.filter(p => p.name.toLowerCase().includes(q) || p.tag.includes(q));
-        renderProducts(filtered);
-    });
-
-    els.navToggle.addEventListener('click', () => {
-        const isOpen = els.navMenu.classList.toggle('nav__list--open');
-        els.navToggle.setAttribute('aria-expanded', String(isOpen));
-    });
-
-    document.getElementById('contactForm').addEventListener('submit', (e) => {
-        e.preventDefault();
-        showToast('Pesan terkirim. Kami akan balas via email.');
-        e.target.reset();
-    });
-
-    // Payment modal events
-    els.paymentBackdrop.addEventListener('click', closePaymentModal);
-    els.paymentClose.addEventListener('click', closePaymentModal);
-    els.payCancel.addEventListener('click', closePaymentModal);
-    els.payForm.addEventListener('submit', (e) => {
-        e.preventDefault();
-        const method = els.payMethod.value;
-        const note = (els.payNote.value || '').trim();
-        const product = els.payProduct.textContent || '';
-        const pkg = els.payPackageRow.style.display !== 'none' ? (els.payPackage.value || '') : '';
-        const dev = els.payDeviceRow.style.display !== 'none' ? (els.payDevice.value || '') : '';
-        const msg = `Halo, saya ingin konfirmasi pembelian:%0A- Produk: ${encodeURIComponent(product)}%0A${pkg ? '- Paket: ' + encodeURIComponent(pkg) + '%0A' : ''}${dev ? '- Device: ' + encodeURIComponent(dev) + '%0A' : ''}- Metode: ${encodeURIComponent(method)}%0A- Catatan: ${encodeURIComponent(note)}`;
-        const wa = 'https://wa.me/6283857228657?text=' + msg;
-        window.open(wa, '_blank');
-        closePaymentModal();
-    });
-
-    // Copy buttons
-    document.addEventListener('click', async (e) => {
-        const copyBtn = e.target.closest('button.copy-btn');
-        if(copyBtn){
-            const number = copyBtn.getAttribute('data-copy');
-            try{
-                await navigator.clipboard.writeText(number);
-                showToast('Nomor disalin ke clipboard');
-            }catch(err){
-                showToast('Gagal menyalin nomor');
-            }
-        }
-    });
-
-    // Sound toggle + autoplay on first interaction (browser policy)
-    const tryPlay = () => {
-        if(!els.bgAudio) return;
-        els.bgAudio.play().then(() => {
-            els.soundToggle.setAttribute('aria-pressed','true');
-            if(els.soundOverlay){ els.soundOverlay.setAttribute('aria-hidden','true'); }
-        }).catch(() => {/* ignored: requires user gesture */});
-        window.removeEventListener('click', tryPlay);
-        window.removeEventListener('keydown', tryPlay);
     };
-    window.addEventListener('click', tryPlay);
-    window.addEventListener('keydown', tryPlay);
-    if(els.soundToggle){
-        els.soundToggle.addEventListener('click', () => {
-            if(els.bgAudio.paused){
-                els.bgAudio.play();
-                els.soundToggle.setAttribute('aria-pressed','true');
-                if(els.soundOverlay){ els.soundOverlay.setAttribute('aria-hidden','true'); }
-            } else {
-                els.bgAudio.pause();
-                els.soundToggle.setAttribute('aria-pressed','false');
+    
+    setTimeout(typeWriter, 1000);
+    
+    // Add event listeners for payment form
+    const gameSelect = document.getElementById('gameSelect');
+    const packageSelect = document.getElementById('packageSelect');
+    
+    if (gameSelect) {
+        gameSelect.addEventListener('change', updatePrice);
+    }
+    
+    if (packageSelect) {
+        packageSelect.addEventListener('change', updatePrice);
+    }
+    
+    const paymentForm = document.querySelector('.payment-form');
+    if (paymentForm) {
+        paymentForm.addEventListener('submit', handlePaymentSubmission);
+    }
+    
+    // Add event listener for file upload
+    const fileInput = document.getElementById('paymentProof');
+    if (fileInput) {
+        fileInput.addEventListener('change', handleFileUpload);
+    }
+    
+    // Add event listeners for payment method radio buttons
+    const paymentMethodRadios = document.querySelectorAll('input[name="paymentMethod"]');
+    paymentMethodRadios.forEach(radio => {
+        radio.addEventListener('change', function() {
+            if (this.checked) {
+                showPaymentDetails(this.value);
             }
         });
-    }
-
-    if(els.soundEnable){
-        els.soundEnable.addEventListener('click', () => {
-            tryPlay();
-        });
-    }
-}
-
-function init(){
-    els.year.textContent = String(new Date().getFullYear());
-    renderProducts(products);
-    attachEvents();
-    initMatrixOverlay();
-}
-
-document.addEventListener('DOMContentLoaded', init);
-
-function initMatrixOverlay(){
-    const canvas = els.matrix;
-    if(!canvas) return;
-    const ctx = canvas.getContext('2d');
-
-    function resize(){
-        canvas.width = window.innerWidth;
-        canvas.height = window.innerHeight;
-        columns = Math.floor(canvas.width / fontSize);
-        drops = Array(columns).fill(1 + Math.floor(Math.random()*40));
-    }
-
-    const glyphs = 'アカサタナハマヤラワ0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ$#+-*/=%_<>[]{}';
-    const fontSize = 14;
-    let columns = 0;
-    let drops = [];
-
-    resize();
-    window.addEventListener('resize', resize);
-
-    function draw(){
-        ctx.fillStyle = 'rgba(0, 0, 0, 0.08)';
-        ctx.fillRect(0, 0, canvas.width, canvas.height);
-
-        ctx.fillStyle = '#39ff14';
-        ctx.font = fontSize + 'px Fira Code, monospace';
-
-        for(let i=0;i<drops.length;i++){
-            const text = glyphs.charAt(Math.floor(Math.random()*glyphs.length));
-            const x = i * fontSize;
-            const y = drops[i] * fontSize;
-            ctx.fillText(text, x, y);
-
-            if(y > canvas.height && Math.random() > 0.975){
-                drops[i] = 0;
-            }
-            drops[i]++;
-        }
-        requestAnimationFrame(draw);
-    }
-    draw();
-}
-
-function openPaymentModal(product){
-    if(!els.paymentModal) return;
-    els.paymentModal.setAttribute('aria-hidden', 'false');
-    els.payProduct.textContent = product.name;
-    // Populate package options if product has priceLabel
-    if(Array.isArray(product.priceLabel) && (product.id === 'stream-002' || product.id === 'bypass-006')){
-        els.payPackageRow.style.display = '';
-        els.payPackage.innerHTML = product.priceLabel.map(v => `<option value="${v}">${v}</option>`).join('');
-    } else {
-        els.payPackageRow.style.display = 'none';
-        els.payPackage.innerHTML = '';
-    }
-
-    // Device selector for CLEANER
-    if(product.id === 'clean-001'){
-        els.payDeviceRow.style.display = '';
-    } else {
-        els.payDeviceRow.style.display = 'none';
-    }
-}
-
-function closePaymentModal(){
-    if(!els.paymentModal) return;
-    els.paymentModal.setAttribute('aria-hidden', 'true');
-    els.payForm.reset();
-}
-
+    });
+});
